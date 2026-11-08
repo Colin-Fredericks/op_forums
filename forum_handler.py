@@ -1,12 +1,32 @@
 import json
 import os
 import subprocess
+import sys
+
+if "-h" in sys.argv or "--help" in sys.argv:
+    print(
+        "Usage: python forum_handler.py [start_from] [end_at]\n"
+        "start_from: The index of the first forum to scrape.\n"
+        "end_at: The index of the last forum to scrape."
+    )
+    sys.exit(0)
+start_from = (
+    int(sys.argv[1])
+    if len(sys.argv) > 1
+    else sys.exit("Error: Please provide a start_from index.")
+)
+end_at = (
+    int(sys.argv[2])
+    if len(sys.argv) > 2
+    else sys.exit("Error: Please provide an end_at index.")
+)
+
+
 
 root_folder = "forum_backup"
-start_from = 0
-end_at = 4
 max_processes = 5
-scrape_command = (
+
+scrape_command: str = (
     "uv run forumscraper "
     + "--html --boards --tags --forums --users "
     + "--retry 3 --retry-delay 30 --wait 0.2 --wait-random 0.2 "
@@ -110,9 +130,6 @@ for forum_name in postable_forums:
 while all_processes:
     batch = all_processes[:max_processes]
     all_processes = all_processes[max_processes:]
-    procs = [
-        subprocess.Popen(i, shell=True)
-        for i in batch
-    ]
+    procs = [subprocess.Popen(i, shell=True) for i in batch]
     for p in procs:
         p.wait()
