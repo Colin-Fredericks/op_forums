@@ -29,7 +29,7 @@ max_processes = 5
 scrape_command: str = (
     "uv run forumscraper "
     + "--html --boards --tags --forums --users "
-    + "--retry 3 --retry-delay 30 --wait 0.2 --wait-random 0.2 "
+    + "--retry 5 --retry-delay 40 --wait 0.2 --wait-random 0.2 "
     # + "--thread-pages-max 3 --pages-max 3 --pages-forums-max 3 --pages-threads-max 3 "
 )
 
