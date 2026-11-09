@@ -5,9 +5,12 @@ import sys
 
 if "-h" in sys.argv or "--help" in sys.argv:
     print(
-        "Usage: python forum_handler.py [start_from] [end_at]\n"
+        "Usage: uv run forum_handler.py [start_from] [end_at]\n"
         "start_from: The index of the first forum to scrape.\n"
-        "end_at: The index of the last forum to scrape."
+        "end_at: The index of the last forum to scrape.\n"
+        "Example: python forum_handler.py 0 4\n"
+        "You should not scrape more than 5 at a time if you want\n"
+        "to avoid being rate-limited or blocked."
     )
     sys.exit(0)
 start_from = (
