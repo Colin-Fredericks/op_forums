@@ -1,6 +1,6 @@
 # Onyx Path Forum Backup
 
-This repository is a backup of the Onyx Path discusion boards as of November 8th, 2026, before they were closed. Warning to those who might want to clone it: this repo is LARGE, over 16GB.
+This repository is a backup of the Onyx Path discusion boards as of November 8th, 2026, before they were closed. Warning to those who might want to clone it: this repo is LARGE, almost 11GB.
 
 Files are stored in the `forum_backup` folder.
 
